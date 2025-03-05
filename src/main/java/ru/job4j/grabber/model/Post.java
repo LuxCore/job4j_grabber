@@ -60,12 +60,12 @@ public class Post {
 			return false;
 		}
 		Post post = (Post) o;
-		return Objects.equals(getId(), post.getId()) && Objects.equals(getCreatedAt(), post.getCreatedAt());
+		return Objects.equals(getLink(), post.getLink());
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(getId(), getCreatedAt());
+		return Objects.hash(getLink());
 	}
 
 	@Override
