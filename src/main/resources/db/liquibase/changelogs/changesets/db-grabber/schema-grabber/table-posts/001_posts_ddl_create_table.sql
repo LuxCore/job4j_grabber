@@ -7,4 +7,4 @@ CREATE TABLE grabber.posts(
 	CONSTRAINT posts_pk PRIMARY KEY(id)
 );
 
-CREATE UNIQUE INDEX posts_name_uidx ON grabber.posts("name");
+CREATE UNIQUE INDEX posts_name_uidx ON grabber.posts(link);
