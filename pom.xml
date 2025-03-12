@@ -19,7 +19,43 @@
 		<shade.version>3.6.0</shade.version>
 		<maven.checkstyle.version>3.6.0</maven.checkstyle.version>
 		<puppycrawl.checkstyle.version>10.21.3</puppycrawl.checkstyle.version>
+		<quartz.version>2.5.0</quartz.version>
+		<slf4j-api.version>2.0.17</slf4j-api.version>
+		<logback.version>1.5.17</logback.version>
+		<postgresql.version>42.7.5</postgresql.version>
 	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>${slf4j-api.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-core</artifactId>
+			<version>${logback.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-classic</artifactId>
+			<version>${logback.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.quartz-scheduler</groupId>
+			<artifactId>quartz</artifactId>
+			<version>${quartz.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<version>${postgresql.version}</version>
+		</dependency>
+	</dependencies>
 
 	<build>
 		<plugins>
