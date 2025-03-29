@@ -65,6 +65,9 @@ public class JdbcStore implements Store {
 				post = new Post();
 				post.setId(selectedPost.getLong("id"));
 				post.setTitle(selectedPost.getString("name"));
+				post.setLink(selectedPost.getString("link"));
+				post.setDescription(selectedPost.getString("text"));
+				post.setCreatedAt(selectedPost.getLong("created_at"));
 			}
 		} catch (SQLException e) {
 			LOG.error("Ошибка при выборке поста по id: {}", id, e);
