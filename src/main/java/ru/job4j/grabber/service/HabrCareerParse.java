@@ -16,6 +16,7 @@ import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.StringJoiner;
 
 public class HabrCareerParse implements Parse {
 	private static final Logger LOG = LoggerFactory.getLogger(HabrCareerParse.class);
@@ -58,5 +59,17 @@ public class HabrCareerParse implements Parse {
 			}
 		}
 		return result;
+	}
+
+	private String retrieveDescription(String link) {
+		StringJoiner result = new StringJoiner("\n");
+		try {
+			Document document = Jsoup.connect(link).get();
+			Elements description = document.select(".vacancy-description__text > *");
+			description.forEach(element -> result.add(element.text()));
+		} catch (IOException e) {
+			LOG.error("Ошибка при получении страницы {}", link, e);
+		}
+		return result.toString();
 	}
 }
