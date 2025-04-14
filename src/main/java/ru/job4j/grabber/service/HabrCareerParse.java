@@ -9,12 +9,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import ru.job4j.grabber.model.Post;
 import ru.job4j.grabber.utils.DateTimeParser;
+import ru.job4j.grabber.utils.HabrCareerDateTimeParser;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
-import java.time.ZonedDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.StringJoiner;
@@ -49,9 +48,7 @@ public class HabrCareerParse implements Parse {
 						String vacancyLink = "%s%s".formatted(SOURCE_LINK, link.attr("href"));
 						Element timestamp = element.select(".vacancy-card__date").first().child(0);
 						String ts = timestamp.attr("datetime");
-						LocalDateTime localTimestamp = ZonedDateTime.parse(ts,
-										DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ssXXX").withZone(ZoneOffset.of("+03:00")))
-								.toLocalDateTime();
+						LocalDateTime localTimestamp = dateTimeParser.parse(ts);
 						Long vacancyCreatedAt = localTimestamp.atOffset(ZoneOffset.of("+03:00")).toEpochSecond();
 						Post post = new Post();
 						post.setTitle(vacancyName);
